@@ -17,21 +17,22 @@ module.exports = {
     filename: 'bundle.js'
   }, 
   module: { 
-    rules: [{ 
+    rules: [
+      { 
         test: /\.js$/, 
         loader: 'babel-loader', 
         exclude: /node_modules/ 
-    }]
-  }, 
-  plugins: [HtmlWebpackPluginConfig],
-
-  plugins: [new MiniCssExtractPlugin()],
-  module: {
-    rules: [
+      },
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-    ],
-  },
+      }
+    ]
+  }, 
+  plugins: [
+    HtmlWebpackPluginConfig,
+    new MiniCssExtractPlugin({
+      filename: "style.css"
+    })
+  ]
 }
